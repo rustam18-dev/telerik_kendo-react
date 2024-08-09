@@ -1,0 +1,70 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  & .left_part {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .title {
+      font-size: 18px;
+    }
+
+    .btn_arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #b5b5b5;
+      border-radius: 2px;
+
+
+      & {
+        .rotate_icons {
+          transform: rotate(90deg);
+
+        }
+
+      }
+    }
+  }
+
+  & .right_part {
+    display: flex;
+    gap: 7px;
+
+    & .btn_help {
+      border: 2px solid #cecece;
+      border-radius: 2px;
+      padding: 4px 14px;
+      background: none;
+    }
+
+    & .btn_cancel {
+      border: 2px solid #59c59b;
+      border-radius: 2px;
+      padding: 4px 14px;
+      background: none;
+    }
+
+    & .btn_save {
+      color: white;
+      border: none;
+      background: rgb(76,173,113);
+      background: linear-gradient(90deg, rgba(76,173,113,1) 39%, rgba(152,235,169,1) 100%);
+      border-radius: 2px;
+      padding: 4px 14px;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  font-weight: bold;
+}
+
+

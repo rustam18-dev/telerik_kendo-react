@@ -1,0 +1,36 @@
+.k-button-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+
+  font-weight: bold;
+  background: none !important;
+
+  &:hover {
+    background: none !important;
+  }
+}
+
+.btn_small {
+  font-size: 12px !important;
+  padding: 2px 4px !important;
+  background: none !important;
+  border: none;
+
+  &:focus {
+    outline: none !important;
+  }
+}
+
+.create_task {
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+}
+
+.btn_global_create {
+  background: #5aaf8f !important;
+  border-radius: 20px !important;
+  color: white !important;
+}

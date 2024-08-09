@@ -1,0 +1,69 @@
+.nav {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  min-width: 100%;
+
+  & .statuses {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 14px;
+
+    .catalog {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+
+      .property {
+        background-color: #c52e9c;
+        border-radius: 60px;
+        padding: 2px 24px;
+        color: white;
+        margin-left: 10px;
+      }
+    }
+
+    .status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap;
+
+      .property {
+        background-color: #5926cc;
+        border-radius: 60px;
+        padding: 3px 24px;
+        color: white;
+        margin-left: 10px;
+      }
+    }
+  }
+
+
+  & .actions {
+    display: flex;
+    gap: 5px;
+
+    .btn_delete {
+      border: 2px solid #acacac;
+      background: none;
+    }
+
+    .btn_refusal {
+      border: 2px solid #c52e9c;
+      background: none;
+    }
+
+    .btn_save {
+      color: white;
+      border: none;
+      background: rgb(76,173,113);
+      background: linear-gradient(90deg, rgba(76,173,113,1) 39%, rgba(152,235,169,1) 100%);
+      border-radius: 2px;
+    }
+
+  }
+}

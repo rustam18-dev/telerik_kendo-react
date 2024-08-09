@@ -1,0 +1,51 @@
+.modal_canvas .k-dialog {
+  display: flex;
+  height: 100vh;
+  width: 55vw;
+  position: relative;
+  right: -23%;
+}
+
+.modal_content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+.k-window-titlebar {
+  border: none !important;
+}
+
+.k-dialog, .k-window, .k-window-titlebar {
+  border-radius: 10px !important;
+}
+
+.k-window-title {
+  padding-bottom: 14px !important;
+}
+
+.k-dialog-title {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.k-window-content {
+  padding: 8px 16px !important;
+}
+
+.close_modal {
+  position: absolute;
+  margin-left: -61px;
+  width: 45px;
+  z-index: 10005;
+  cursor: pointer;
+
+  & div {
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    background-color: #59c59b;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+}

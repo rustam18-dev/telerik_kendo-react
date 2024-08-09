@@ -1,0 +1,19 @@
+@import 'assets/css/modal';
+@import 'assets/css/button';
+@import 'assets/css/tabs';
+@import 'assets/css/table';
+@import 'assets/css/checkbox';
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.flex-justify-space-between {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
