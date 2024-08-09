@@ -1,0 +1,39 @@
+.k-switch-on .k-switch-track {
+  background: #3dbc8a !important;
+  border: 2px solid #3dbc8a !important;
+  width: 100% !important;
+}
+
+.k-switch .k-switch-md {
+  width: 100% !important;
+}
+
+.k-switch-md  {
+  margin-top: 5px;
+  width: 75px !important;
+  height: 24px !important;
+}
+
+.k-switch-off:focus .k-switch-track, .k-switch-off.k-focus .k-switch-track {
+  outline-color: #59c59b !important;
+  width: 100% !important;
+}
+
+.k-switch-on:focus .k-switch-track, .k-switch-on.k-focus .k-switch-track {
+  outline-color: #59c59b !important;
+  width: 100% !important;
+}
+
+.k-switch-md .k-switch-thumb {
+  width: 22px !important;
+  height: 22px !important;
+}
+
+.k-switch-off .k-switch-thumb {
+  background: #dbdbdb !important;
+}
+
+.k-switch-on .k-switch-thumb {
+  background: #fafafa !important;
+}
+

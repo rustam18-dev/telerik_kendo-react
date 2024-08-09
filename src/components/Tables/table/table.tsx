@@ -12,17 +12,19 @@ const SELECTED_FIELD = 'selected';
 
 type Props = {
   selectedTab: number,
+  client: (employee: IEmployee) => void,
 }
-export const Table = ({selectedTab}: Props) => {
+export const Table = ({selectedTab, client}: Props) => {
   const [data, setData] = useState<IEmployee[]>(employees)
 
   const handleDoubleClick = (event: GridRowDoubleClickEvent) => {
-    console.log(event.dataItem)
+    client(event.dataItem)
   }
 
   useEffect(() => {
     setData(employees.slice(0, selectedTab + 10))
   }, [selectedTab])
+
   return (
     <div >
       <Grid

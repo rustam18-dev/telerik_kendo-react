@@ -1,0 +1,21 @@
+.k-popup {
+  border-radius: 15px !important;
+}
+.k-list-content {
+  border: 2px solid #59c59b !important;
+  border-radius: 15px;
+}
+
+.k-list {
+  border-radius: 15px !important;
+}
+
+
+.k-list-item.k-selected, .k-selected.k-list-optionlabel {
+  background: #fff !important;
+  color: #59c59b !important;
+}
+
+.k-list-item:focus, .k-list-optionlabel:focus, .k-list-item.k-focus, .k-focus.k-list-optionlabel {
+  box-shadow: none !important;
+}
