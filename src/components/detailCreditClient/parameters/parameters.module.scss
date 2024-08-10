@@ -1,0 +1,182 @@
+
+.parameters {
+
+  & .parameter__title {
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 4px 12px;
+    background: #e3e3e3;
+
+    &:after {
+      content: '';
+      position: absolute;
+      margin-left: 11px;
+      margin-top: 8px;
+      width: calc(98% - 105px);
+      border: 1px solid #e3e3e3;
+    }
+  }
+
+  & .parameters__items {
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+
+    & .parameters__brand {
+      grid-area: 1/1/2/2;
+
+      .input_brand {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__model {
+      grid-area: 1/2/2/3;
+
+      .input_model {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__color {
+      grid-area: 1/3/2/4;
+
+      .input_color {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__number_engine {
+      grid-area: 1 / 4 / 2 / 6;
+
+      .input_number_engine {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__year_of_issue {
+      margin: 0;
+      grid-area: 2/1/3/2;
+
+      .input_year_of_issue {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__state_passport {
+      margin: 0;
+      grid-area: 2/2/3/3;
+
+      .input_state_passport {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__technical_passport {
+      margin: 0;
+      grid-area: 2/3/3/4;
+
+      .input_technical_passport {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__number_body {
+      margin: 0;
+      grid-area: 2 / 4 / 3 / 6;
+
+      .input_number_body {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__register_place {
+      margin: 0;
+      grid-area: 3 / 1 / 4 / 3;
+
+      .input_register_place {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__owner {
+      margin: 0;
+      grid-area: 3/3/4/4;
+
+      .input_owner {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__type_body {
+      margin: 0;
+      grid-area: 3 / 4 / 4 / 6;
+
+      .input_type_body {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+    & .parameters__additionally {
+      margin: 0;
+      grid-area: 4 / 1 / 5 / 6;
+
+      .input_additionally {
+        padding: 8px 12px;
+        color: #7a8984;
+        background-color: #e3fff4;
+        border: 2px solid #89d3b6;
+        border-radius: 6px;
+      }
+    }
+
+  }
+}

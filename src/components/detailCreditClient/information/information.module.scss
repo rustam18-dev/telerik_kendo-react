@@ -1,0 +1,82 @@
+.information {
+
+  & .information__title {
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 4px 12px;
+    background: #e3e3e3;
+
+    &:after {
+      content: '';
+      position: absolute;
+      margin-left: 11px;
+      margin-top: 8px;
+      width: calc(97% - 105px);
+      border: 1px solid #e3e3e3;
+    }
+  }
+
+  & .information__form {
+    margin: 15px 0;
+
+
+    & .information__form_top {
+      display: flex;
+      width: 95%;
+      gap: 8px;
+
+      & .information__block_input {
+        display: flex;
+        gap: 10px;
+        width: 100%;
+
+        & .information__form_top_collateral {
+          width: 100%;
+
+          .input_collateral {
+            padding: 8px 12px;
+            color: #7a8984;
+            background-color: #e3fff4;
+            border: 2px solid #89d3b6;
+            border-radius: 6px;
+          }
+        }
+
+        & .information__form_top_market {
+          width: 100%;
+
+          .input_market {
+            padding: 8px 12px;
+            color: #7a8984;
+            background-color: #e3fff4;
+            border: 2px solid #89d3b6;
+            border-radius: 6px;
+          }
+        }
+      }
+
+      & .information__form_top_pledger {
+      }
+    }
+
+    & .information__form_bottom {
+      display: flex;
+      gap: 10px;
+      width: calc(100% + 10px);
+
+      & .information__form_bottom_description {
+        width: 100%;
+
+        & .textarea_description {
+          padding: 8px 12px;
+          color: #7a8984;
+          background-color: #e3fff4;
+          border: 2px solid #89d3b6;
+          border-radius: 6px;
+        }
+      }
+
+    }
+  }
+}

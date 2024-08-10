@@ -13,8 +13,9 @@ const SELECTED_FIELD = 'selected';
 type Props = {
   selectedTab: number,
   client: (employee: IEmployee) => void,
+  toTopAddGuarantor: () => void
 }
-export const Table = ({selectedTab, client}: Props) => {
+export const Table = ({selectedTab, client, toTopAddGuarantor}: Props) => {
   const [data, setData] = useState<IEmployee[]>(employees)
 
   const handleDoubleClick = (event: GridRowDoubleClickEvent) => {
@@ -43,7 +44,7 @@ export const Table = ({selectedTab, client}: Props) => {
           width={50}
         />
 
-        <Column title={<TableAction/>}>
+        <Column title={<TableAction addGuarantor={toTopAddGuarantor}/>}>
           <Column
             field="full_name"
             title="Contact Name"

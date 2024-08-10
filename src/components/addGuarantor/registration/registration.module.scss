@@ -1,0 +1,19 @@
+.registration {
+
+  .registration__title {
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 4px 12px;
+    background: #e3e3e3;
+
+    &:after {
+      content: '';
+      position: absolute;
+      margin-left: 11px;
+      margin-top: 8px;
+      width: calc(98.5% - 125px);
+      border: 1px solid #e3e3e3;
+    }
+  }
+}

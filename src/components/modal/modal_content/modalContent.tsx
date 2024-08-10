@@ -1,47 +1,56 @@
-import {ModalNav} from "../modal_nav/modalNav.tsx";
-import {Tabs} from "../../tabs/tabs.tsx";
-import {TabStripTab} from "@progress/kendo-react-layout";
-import {Table} from "../../Tables/table/table.tsx";
-import {useState} from "react";
-import {IEmployee} from "../../../types/employee.types.ts";
-import {DetailCreditClient} from "../../detailCreditClient/detailCreditClient.tsx";
+import { ModalNav } from "../modal_nav/modalNav.tsx"
+import { Tabs } from "../../tabs/tabs.tsx"
+import { TabStripTab } from "@progress/kendo-react-layout"
+import { Table } from "../../Tables/table/table.tsx"
+import { useState } from "react"
+import { IEmployee } from "../../../types/employee.types.ts"
+import { DetailCreditClient } from "../../detailCreditClient/detailCreditClient.tsx"
+import { AddGuarantor } from "../../addGuarantor/addGuarantor.tsx"
 
 export const ModalContent = () => {
-  const [selectedTab, setSelectedTab] = useState<number>(0);
-  const [client, setClient] = useState<IEmployee>({} as IEmployee);
+  const [selectedTab, setSelectedTab] = useState<number>(0)
+  const [client, setClient] = useState<IEmployee>({} as IEmployee)
+  const [showAddGuarantor, setShowGuarantor] = useState<boolean>(false)
 
   const handleTabSelect = (index: number) => {
-    setSelectedTab(index);
+    setSelectedTab(index)
   }
 
   const handleSelectClient = (data: IEmployee) => {
     setClient(data)
-    console.log(client?.id)
   }
 
-  return <>
-    {client.id === undefined ? (
-      <div className={'modal_content'}>
-        <ModalNav/>
+  return (
+    <>
+      {showAddGuarantor ? (
+        <AddGuarantor />
+      ) : client.id === undefined ? (
+        <div className={"modal_content"}>
+          <ModalNav />
 
-        <Tabs selected={selectedTab} onTabSelect={handleTabSelect}>
-          <TabStripTab title="Основные сведения"/>
-          <TabStripTab title="Фото и документ"/>
-          <TabStripTab title="Комментарии"/>
-          <TabStripTab title="Ввод"/>
-          <TabStripTab title="Чек-лист"/>
-          <TabStripTab title="График погашения"/>
-          <TabStripTab title="Залог"/>
-          <TabStripTab title="Поручитель"/>
-          <TabStripTab title="История"/>
-          <TabStripTab title="КИБ"/>
-          <TabStripTab title="СКОРИНГ"/>
-        </Tabs>
+          <Tabs selected={selectedTab} onTabSelect={handleTabSelect}>
+            <TabStripTab title="Основные сведения" />
+            <TabStripTab title="Фото и документ" />
+            <TabStripTab title="Комментарии" />
+            <TabStripTab title="Ввод" />
+            <TabStripTab title="Чек-лист" />
+            <TabStripTab title="График погашения" />
+            <TabStripTab title="Залог" />
+            <TabStripTab title="Поручитель" />
+            <TabStripTab title="История" />
+            <TabStripTab title="КИБ" />
+            <TabStripTab title="СКОРИНГ" />
+          </Tabs>
 
-        <Table selectedTab={selectedTab} client={handleSelectClient}/>
-      </div>
-    ) : (
-      <DetailCreditClient toggle={() => setClient({} as IEmployee)}/>
-    )}
-  </>
+          <Table
+            selectedTab={selectedTab}
+            client={handleSelectClient}
+            toTopAddGuarantor={() => setShowGuarantor(!showAddGuarantor)}
+          />
+        </div>
+      ) : (
+        <DetailCreditClient toggle={() => setClient({} as IEmployee)} />
+      )}
+    </>
+  )
 }

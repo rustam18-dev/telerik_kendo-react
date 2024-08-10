@@ -2,20 +2,58 @@ import {Tabs} from "../tabs/tabs.tsx"
 import {TabStripTab} from "@progress/kendo-react-layout"
 import {MouseEvent, useRef, useState} from "react"
 import styles from './detailCreditClient.module.scss'
-import {DropDownList, Switch, TextArea, TextBox} from "@progress/kendo-react-all";
 import {Button} from "@progress/kendo-react-buttons";
+import {Information} from "./information/information.tsx";
+import {Area} from "./area/area.tsx";
+import {RegistrationAddress} from "./registrationAddress/registrationAddress.tsx";
+import {Parameters} from "./parameters/parameters.tsx";
 
 type Props = {
   toggle: () => void
 }
 
-export const DetailCreditClient = ({toggle}: Props) => {
-  const [selectedTab, setSelectedTab] = useState<number>(0)
+interface IDeposit {
+  id: number,
+  number: string,
+  title: string
+}
 
+const deposits: IDeposit[] = [
+  {
+    id: 1,
+    number: '01',
+    title: 'Амволи Камматбахо'
+  },
+  {
+    id: 2,
+    number: '02',
+    title: 'Амволи гайриманкул'
+  },
+  {
+    id: 3,
+    number: '03',
+    title: 'Амволи хона'
+  },
+  {
+    id: 4,
+    number: '04',
+    title: 'Автомашина (ихтиёрдори)'
+  },
+  {
+    id: 5,
+    number: '05',
+    title: 'Автомашина (Банк)'
+  },
+]
+
+export const DetailCreditClient = ({toggle}: Props) => {
+  const itemsRef = useRef<HTMLDivElement | null>(null)
+
+  const [selectedTab, setSelectedTab] = useState<number>(0)
   const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
   const [startX, setStartX] = useState<number>(0)
   const [scrollLeft, setScrollLeft] = useState<number>(0)
-  const itemsRef = useRef<HTMLDivElement | null>(null)
+  const [selectedDeposit, setSelectedDeposit] = useState<number | string>('01')
 
   const handleTabSelect = (index: number) => {
     setSelectedTab(index)
@@ -46,13 +84,20 @@ export const DetailCreditClient = ({toggle}: Props) => {
     itemsRef.current.scrollLeft = scrollLeft - walk
   }
 
+  const getItemClasses = (itemNumber: string) => {
+    return `${styles.type_credit__item} ${
+      selectedDeposit === itemNumber ? styles.type_credit__item_active : ''
+    }`;
+  };
+
   return (
     <>
       <div className={styles.content_block}>
         <div>
           <Tabs selected={selectedTab} onTabSelect={handleTabSelect}>
-            <TabStripTab title="Ввод залога" />
-            <TabStripTab title="Комментарии" />
+            <TabStripTab title="Ввод залога"/>
+            <TabStripTab title="Комментарии"/>
+            <TabStripTab title="Документы"/>
           </Tabs>
 
           <div className={styles.type_credit}>
@@ -64,75 +109,43 @@ export const DetailCreditClient = ({toggle}: Props) => {
               onMouseLeave={handleMouseLeave}
               onMouseUp={handleMouseUp}
               onMouseMove={handleMouseMove}
+
             >
-              {new Array(20).fill(2).map((_, index) => (
-                <div className={styles.type_credit__item} key={index}>
-                  <span className={styles.type_credit__item_number}>{index + 1}</span>
-                  <span className={styles.type_credit__item_name}>Автомашина (Банк {index + 1})</span>
+              {deposits.map((_item: IDeposit) => (
+                <div
+                  className={getItemClasses(_item.number)}
+                  key={_item.id}
+                  onClick={() => setSelectedDeposit(_item.number)}
+                >
+                  <span className={styles.type_credit__item_number}>{_item.number}</span>
+                  <span className={styles.type_credit__item_name}>{_item.title}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className={styles.information}>
-            <span className={styles.information__title}>Информация</span>
-            <div className={styles.information__form}>
-              <div className={styles.information__form_top}>
-                <div className={styles.information__block_input}>
-                  <p className={styles.information__form_top_collateral}>
-                    <span>Залоговая стоимость</span>
-                    <TextBox placeholder='Введите стоимость' className={styles.input_collateral}/>
-                  </p>
-                  <p className={styles.information__form_top_market}>
-                    <span>Рыночная стоимость</span>
-                    <TextBox placeholder='Введите стоимость' className={styles.input_market}/>
-                  </p>
-                </div>
-                <p className={styles.information__form_top_pledger}>
-                  <span>Залогодатель</span>
-                  <Switch offLabel={'Нет'} onLabel={'Да'}/>
-                </p>
-              </div>
-              <div className={styles.information__form_bottom}>
-                <p className={styles.information__form_bottom_description}>
-                  <span>Описание</span>
-                  <TextArea resizable={'none'} placeholder='Введите описание' className={styles.textarea_description}/>
-                </p>
-                <p className={styles.information__form_bottom_owner}>
-                  Является собственностью
-                  <Switch offLabel={'Нет'} onLabel={'Да'}/>
-                </p>
-              </div>
-            </div>
-          </div>
+          {selectedDeposit === '05' ? (
+            <>
+              <Area/>
+              <Parameters/>
+            </>
+          ) : selectedDeposit === '02' ? (
+            <>
+              <Area/>
+              <RegistrationAddress/>
+            </>
+          ) : selectedDeposit === '03' ? (
+            <>
+              <RegistrationAddress/>
+              <Information/>
+            </>
+          ) : (
+            <>
+              <Information/>
+              <RegistrationAddress/>
+            </>
+          )}
 
-          <div className={styles.area}>
-            <span className={styles.area__title}>Площадь</span>
-            <div className={styles.area__top_block}>
-              <p className={styles.area__all_area}>
-                <span>Общая площадь (м&sup2;)</span>
-                <TextBox placeholder='-' className={styles.input_all_area}/>
-              </p>
-              <p className={styles.area__living_area}>
-                <span>Жил. площадь (м&sup2;)</span>
-                <TextBox placeholder='-' className={styles.input_living_area}/>
-              </p>
-              <p className={styles.area__land}>
-                <span>Земельный участок (м&sup2;)</span>
-                <TextBox placeholder='-' className={styles.input_land}/>
-              </p>
-              <p className={styles.area__documents}>
-                <span>Документы</span>
-                <DropDownList className={styles.input_documents} data={['Договор', 'Договор2']}/>
-              </p>
-            </div>
-            <div className={styles.area__bottom_block}>
-              <p className={styles.area__additionally}>
-                <span>Дополнительно</span>
-                <TextArea resizable={'none'} placeholder='Введите данные' className={styles.textarea_additionally}/>
-              </p>
-            </div>
-          </div>
         </div>
         <div className={styles.btn_footer}>
           <Button className={styles.btn_cancel} fillMode={'flat'} onClick={() => toggle()}>Отменить</Button>

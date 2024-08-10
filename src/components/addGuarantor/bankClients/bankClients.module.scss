@@ -1,0 +1,70 @@
+
+.bank_clients {
+  .bank_clients__title {
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 4px 12px;
+    background: #e3e3e3;
+
+    &:after {
+      content: '';
+      position: absolute;
+      margin-left: 11px;
+      margin-top: 8px;
+      width: calc(85.5% - 125px);
+      border: 1px solid #e3e3e3;
+    }
+  }
+
+  & .bank_clients__block {
+    margin: 8px 0;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+
+    & .bank_clients__text {
+      display: grid;
+      align-items: center;
+      grid-area: 1 / 1 / 2 / 6;
+      color: #959595;
+      font-size: 13px;
+    }
+
+    & .bank_clients__module {
+      grid-area: 1 / 7 / 2 / 10;
+      display: grid;
+      align-items: center;
+
+      .bank_clients__btn_module {
+        color: white;
+        border: none;
+        background: linear-gradient(90deg, rgba(76, 173, 113, 1) 39%, rgba(152, 235, 169, 1) 100%) !important;
+        border-radius: 2px;
+        padding: 8px 22px;
+      }
+
+    }
+
+    & .bank_clients__search {
+      grid-area: 2 / 3 / 3 / 8;
+
+      .input_search {
+        padding: 6px 12px;
+        color: #7a8984;
+        border: 2px solid #89d3b6;
+        border-radius: 50px;
+        text-align: center;
+
+        &:after {
+          content: url("../../../assets/svg/icons8-search.svg");
+          margin-top: 5px;
+        }
+      }
+    }
+
+  }
+}

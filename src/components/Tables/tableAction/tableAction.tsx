@@ -3,8 +3,11 @@ import {AlignStartVertical, CirclePlus, LayoutGrid, Pencil, RefreshCcw, Trash2} 
 import styles from './tableAction.module.scss'
 import {useState} from "react";
 
+type Props = {
+  addGuarantor?: () => void
+}
 
-export const TableAction = () => {
+export const TableAction = ({addGuarantor}: Props) => {
   const [active, setActive] = useState<boolean>(true);
 
   return <>
@@ -14,7 +17,7 @@ export const TableAction = () => {
           <RefreshCcw size={12}/>
           <span>Обновить</span>
         </Button>
-        <Button className='flex-center btn_small' fillMode={'flat'}>
+        <Button className='flex-center btn_small' fillMode={'flat'} onClick={addGuarantor}>
           <CirclePlus size={12}/>
           <span>Добавить поручителя</span>
         </Button>
