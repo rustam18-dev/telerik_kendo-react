@@ -1,0 +1,32 @@
+.guarantor {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+
+  & .btn_block {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 10px 0;
+
+    .btn_cancel {
+      padding: 8px 26px;
+      border: 2px solid #59c59b !important;
+      font-weight: bold;
+
+      &:focus {
+        outline: none;
+        background: none;
+      }
+    }
+
+    .btn_submit {
+      padding: 8px 26px;
+      color: white;
+      border: none;
+      background: linear-gradient(90deg, rgba(76, 173, 113, 1) 39%, rgba(152, 235, 169, 1) 100%) !important;
+      border-radius: 2px;
+    }
+  }
+}

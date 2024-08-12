@@ -5,6 +5,7 @@
 @import 'assets/css/checkbox';
 @import 'assets/css/switch';
 @import 'assets/css/list_item';
+@import 'assets/css/datepicker';
 
 .flex-center {
   display: flex;
@@ -17,5 +18,12 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
+}
+
+.flex-justify-space-between-col {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
