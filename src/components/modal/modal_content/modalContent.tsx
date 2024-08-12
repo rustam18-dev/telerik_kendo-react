@@ -1,7 +1,7 @@
 import { ModalNav } from "../modal_nav/modalNav.tsx"
 import { Tabs } from "../../tabs/tabs.tsx"
 import { TabStripTab } from "@progress/kendo-react-layout"
-import { Table } from "../../Tables/table/table.tsx"
+import { DisplayData } from "../../displayData/displayData.tsx"
 import { useState } from "react"
 import { IEmployee } from "../../../types/employee.types.ts"
 import { DetailCreditClient } from "../../detailCreditClient/detailCreditClient.tsx"
@@ -23,7 +23,7 @@ export const ModalContent = () => {
   return (
     <>
       {showAddGuarantor ? (
-        <AddGuarantor />
+        <AddGuarantor toggleGuarantor={() => setShowGuarantor(!showAddGuarantor)}/>
       ) : client.id === undefined ? (
         <div className={"modal_content"}>
           <ModalNav />
@@ -42,7 +42,7 @@ export const ModalContent = () => {
             <TabStripTab title="СКОРИНГ" />
           </Tabs>
 
-          <Table
+          <DisplayData
             selectedTab={selectedTab}
             client={handleSelectClient}
             toTopAddGuarantor={() => setShowGuarantor(!showAddGuarantor)}

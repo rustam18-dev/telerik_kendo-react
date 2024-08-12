@@ -9,7 +9,6 @@
 .modal_content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
 }
 
 
@@ -35,8 +34,8 @@
 
 .close_modal {
   position: absolute;
-  margin-left: -61px;
-  width: 45px;
+  margin-left: -56px;
+  width: 40px;
   z-index: 10005;
   cursor: pointer;
 

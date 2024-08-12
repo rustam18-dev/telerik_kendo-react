@@ -1,0 +1,108 @@
+.statistics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 4.5%;
+
+
+  .statistics__loan_body {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    gap: calc(3% - 10px);
+
+    .statistics__loan_body__item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 45px;
+
+      .square {
+        width: 25px;
+        height: 25px;
+        background: #80d5df;
+        border-radius: 8px;
+      }
+
+      .statistics__loan_body__item_text {
+        display: flex;
+        flex-direction: column;
+
+        .loan_body {
+          font-size: 12px;
+          font-weight: bold;
+        }
+
+        .price {
+          font-size: 16px;
+          color: #07989c;
+        }
+      }
+    }
+  }
+
+  .statistics__remaining_credit {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    gap: calc(3% - 10px);
+
+    .statistics__remaining_credit_item {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 45px;
+
+      .square {
+        width: 25px;
+        height: 25px;
+        background: #01a29f;
+        border-radius: 8px;
+      }
+
+      .statistics__remaining_credit_item_text {
+        display: flex;
+        flex-direction: column;
+
+        .remain {
+          font-size: 12px;
+          font-weight: bold;
+        }
+
+        .price {
+          font-size: 16px;
+          color: #07989c;
+        }
+      }
+    }
+  }
+
+
+  .statistics__interest_rate {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(12, 1fr);
+    gap: calc(3% - 10px);
+
+    .statistics__interest_rate_item {
+      display: flex;
+      flex-direction: column;
+      width: 45px;
+
+      .interest_rate {
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .percent {
+        font-size: 16px;
+        color: #07989c;
+      }
+    }
+  }
+
+}
+
+.opacity {
+  opacity: 0.4 !important;
+}

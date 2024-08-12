@@ -6,14 +6,15 @@ type Props = {
   onTabSelect: (index: number) => void,
 };
 
-export const Tabs = ({ children, selected, onTabSelect }: Props) => {
+export const Tabs = ({children, selected, onTabSelect}: Props) => {
   const handleSelect = (e: TabStripSelectEventArguments) => {
+    console.log(e)
     onTabSelect(e.selected);
-  };
+  }
 
   return (
-    <TabStrip selected={selected} onSelect={handleSelect} scrollable={true}>
+    <TabStrip selected={selected} onSelect={handleSelect} scrollable={true} >
       {children}
     </TabStrip>
-  );
-};
+  )
+}

@@ -1,0 +1,45 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0;
+
+  & .actions__block {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+
+    & .actions_checkbox {
+      display: flex;
+      margin-right: 5px;
+
+      input[type='checkbox'] {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      &:after {
+        content: '|';
+        font-size: 25px;
+        position: relative;
+        left: 10px;
+        top: -2px;
+        color: #bfbfbf;
+      }
+    }
+  }
+}
+
+
+.active {
+  border-radius: 8px !important;
+  padding: 8px !important;
+  background-color: #59ad8c !important;
+  cursor: pointer !important;
+}
+
+.type_btn {
+  border-radius: 8px !important;
+  padding: 8px !important;
+  cursor: pointer !important;
+}
