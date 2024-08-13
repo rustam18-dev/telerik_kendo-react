@@ -1,6 +1,7 @@
 import styles from "./inputNewGuarantor.module.scss";
 import {Button} from "@progress/kendo-react-buttons";
 import {TextBox} from "@progress/kendo-react-all";
+import {Edit} from "lucide-react";
 
 export const InputNewGuarantor = () => {
   return (
@@ -19,7 +20,10 @@ export const InputNewGuarantor = () => {
             <TextBox placeholder={'-'} className={styles.input_id_client}/>
           </div>
           <div className={styles.input_new_guarantor__btn_edit}>
-            <Button className={styles.btn_edit}>Редактировать</Button>
+            <Button className={styles.btn_edit}>
+              <Edit size={14}/>
+              <span>Редактировать</span>
+            </Button>
           </div>
           <div className={styles.input_new_guarantor__lastname}>
             <span>Фамилия</span>

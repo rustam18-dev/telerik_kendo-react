@@ -34,3 +34,11 @@ div.k-tabstrip-top>div.k-content, div.k-tabstrip-top>div.k-tabstrip-content {
 .k-tabstrip-content {
   display: none !important;
 }
+
+.k-tabstrip-horizontal, .k-tabstrip-top>.k-tabstrip-items-wrapper, .k-tabstrip-bottom>.k-tabstrip-items-wrapper {
+  gap: 15px !important;
+}
+
+.k-tabstrip-scrollable>.k-tabstrip-items-wrapper>.k-tabstrip-items {
+  gap: 5px !important;
+}

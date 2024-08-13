@@ -15,11 +15,11 @@ export const ModalHeader = ({title, toggleDialog}: Props) => {
       <div className={styles.left_part}>
         <div className={styles.btn_arrow}>
           <Button fillMode={'flat'}>
-            <ChevronLeft className={styles.icon} size={16}/>
+            <ChevronLeft className={styles.icon} size={22}/>
           </Button>
           <Minus className={styles.rotate_icons} size={16} color={'#a7a7a7'}/>
           <Button fillMode={'flat'}>
-            <ChevronRight className={styles.icon} size={16}/>
+            <ChevronRight className={styles.icon} size={22}/>
           </Button>
         </div>
         <div>

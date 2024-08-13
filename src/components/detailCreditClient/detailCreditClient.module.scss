@@ -3,6 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+
 }
 
 .btn_footer {
@@ -34,6 +35,7 @@
 
 .type_credit {
   margin: 15px 0;
+  border-radius: 15px;
 
   & .type_credit__title {
     font-size: 13px;
@@ -41,6 +43,7 @@
     border-radius: 15px;
     padding: 4px 12px;
     background: #e3e3e3;
+    border: 2px solid #e3e3e3;
 
     &:after {
       content: '';
@@ -52,9 +55,60 @@
     }
   }
 
+  .type_credit__items_default {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    column-gap: 30px;
+    row-gap: 8px;
+    margin: 20px 0;
+    overflow-x: auto;
+    user-select: none;
+    padding: 0;
+
+
+
+    &::-webkit-scrollbar {
+      height: 1px;
+      background-color: transparent;
+    }
+
+
+    & .type_credit__item {
+      display: flex;
+      flex-direction: column;
+      padding: 4px 10px;
+      width: 100%;
+      min-width: 150px;
+      height: 60px;
+      border-radius: 15px;
+      background-color: #fff;
+      border: 1px solid #e3e3e3;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 550;
+
+
+      & .type_credit__item_number {
+        font-size: 20px;
+        color: #cccccc;
+      }
+
+      &:hover {
+        transition: border-color .3s;
+        border-color: #59c59b;
+      }
+    }
+
+    & .type_credit__item_active {
+      border: 2px solid #3dbc8a;
+      background: #f2fffa;
+    }
+  }
+
   .type_credit__items {
     display: flex;
-    gap: 8px;
+    gap: 12px;
     margin: 20px 0;
     overflow-x: auto;
     user-select: none;
@@ -96,4 +150,19 @@
       background: #f2fffa;
     }
   }
+}
+
+.background {
+  position: absolute;
+  width: 99%;
+  height: 60%;
+  margin-top: -10px;
+  margin-left: -10px;
+  opacity: .5;
+  z-index: -1;
+  border-radius: 10px;
+  background: hsla(259, 40%, 92%, 1);
+  background: linear-gradient(90deg, hsla(259, 40%, 92%, 1) 8%, hsla(257, 39%, 93%, 1) 10%, hsla(180, 14%, 99%, 1) 58%, hsla(172, 92%, 95%, 1) 100%);
+  background: -moz-linear-gradient(90deg, hsla(259, 40%, 92%, 1) 8%, hsla(257, 39%, 93%, 1) 10%, hsla(180, 14%, 99%, 1) 58%, hsla(172, 92%, 95%, 1) 100%);
+  background: -webkit-linear-gradient(90deg, hsla(259, 40%, 92%, 1) 8%, hsla(257, 39%, 93%, 1) 10%, hsla(180, 14%, 99%, 1) 58%, hsla(172, 92%, 95%, 1) 100%);
 }

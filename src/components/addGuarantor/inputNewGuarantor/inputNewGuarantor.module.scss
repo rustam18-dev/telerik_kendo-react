@@ -54,6 +54,7 @@
 
     & .input_new_guarantor__id_client {
       grid-area: 2/1/3/2;
+      font-size: 14px;
 
       .input_id_client {
         padding: 2px 8px;
@@ -69,25 +70,20 @@
       grid-area: 2/2/3/3;
       display: grid;
       align-items: end;
+      font-size: 14px;
 
       .btn_edit {
         padding: 7px 12px;
         background: none;
         outline: none;
         border: none;
+      }
 
-      }
-      &:before {
-        position: absolute;
-        content: url("../../../assets/svg/icons8-create-16.png");
-        top: 27px;
-        left: 10px;
-        z-index: 100;
-      }
     }
 
     & .input_new_guarantor__lastname {
       grid-area: 3 / 1 / 4 / 3;
+      font-size: 14px;
 
       .input_lastname {
         padding: 2px 8px;
@@ -100,6 +96,7 @@
 
     & .input_new_guarantor__name {
       grid-area: 3/3/4/4;
+      font-size: 14px;
 
       .input_name {
         padding: 2px 8px;
@@ -112,6 +109,7 @@
 
     & .input_new_guarantor__patronymic {
       grid-area: 3/4/4/5;
+      font-size: 14px;
 
       .input_patronymic {
         padding: 2px 8px;

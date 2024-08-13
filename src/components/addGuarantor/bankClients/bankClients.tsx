@@ -24,7 +24,7 @@ export const BankClients = () => {
             </Button>
           </div>
           <div className={styles.bank_clients__search}>
-            <TextBox placeholder={"Поиск"} className={styles.input_search} />
+            <TextBox placeholder={"Поиск"} className={styles.input_search} style={{textAlign: 'center'}} />
           </div>
         </div>
       </div>

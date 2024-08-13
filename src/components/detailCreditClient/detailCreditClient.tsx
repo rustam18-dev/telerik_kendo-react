@@ -1,4 +1,4 @@
-import {Tabs} from "../tabs/tabs.tsx"
+import {Tabs} from "../ui/tabs/tabs.tsx"
 import {TabStripTab} from "@progress/kendo-react-layout"
 import {MouseEvent, useRef, useState} from "react"
 import styles from './detailCreditClient.module.scss'
@@ -7,44 +7,12 @@ import {Information} from "./information/information.tsx";
 import {Area} from "./area/area.tsx";
 import {RegistrationAddress} from "./registrationAddress/registrationAddress.tsx";
 import {Parameters} from "./parameters/parameters.tsx";
+import {deposits, IDeposit} from "../../assets/data/deposits.ts";
 
 type Props = {
   toggle: () => void
 }
 
-interface IDeposit {
-  id: number,
-  number: string,
-  title: string
-}
-
-const deposits: IDeposit[] = [
-  {
-    id: 1,
-    number: '01',
-    title: 'Амволи Камматбахо'
-  },
-  {
-    id: 2,
-    number: '02',
-    title: 'Амволи гайриманкул'
-  },
-  {
-    id: 3,
-    number: '03',
-    title: 'Амволи хона'
-  },
-  {
-    id: 4,
-    number: '04',
-    title: 'Автомашина (ихтиёрдори)'
-  },
-  {
-    id: 5,
-    number: '05',
-    title: 'Автомашина (Банк)'
-  },
-]
 
 export const DetailCreditClient = ({toggle}: Props) => {
   const itemsRef = useRef<HTMLDivElement | null>(null)
@@ -53,7 +21,7 @@ export const DetailCreditClient = ({toggle}: Props) => {
   const [isMouseDown, setIsMouseDown] = useState<boolean>(false)
   const [startX, setStartX] = useState<number>(0)
   const [scrollLeft, setScrollLeft] = useState<number>(0)
-  const [selectedDeposit, setSelectedDeposit] = useState<number | string>('01')
+  const [selectedDeposit, setSelectedDeposit] = useState<number | string>(-1)
 
   const handleTabSelect = (index: number) => {
     setSelectedTab(index)
@@ -85,9 +53,7 @@ export const DetailCreditClient = ({toggle}: Props) => {
   }
 
   const getItemClasses = (itemNumber: string) => {
-    return `${styles.type_credit__item} ${
-      selectedDeposit === itemNumber ? styles.type_credit__item_active : ''
-    }`;
+    return `${styles.type_credit__item} ${selectedDeposit === itemNumber ? styles.type_credit__item_active : ''}`;
   };
 
   return (
@@ -104,12 +70,11 @@ export const DetailCreditClient = ({toggle}: Props) => {
             <span className={styles.type_credit__title}>Вид залога</span>
             <div
               ref={itemsRef}
-              className={styles.type_credit__items}
+              className={`${selectedDeposit === -1 ? styles.type_credit__items_default : styles.type_credit__items}`}
               onMouseDown={handleMouseDown}
               onMouseLeave={handleMouseLeave}
               onMouseUp={handleMouseUp}
               onMouseMove={handleMouseMove}
-
             >
               {deposits.map((_item: IDeposit) => (
                 <div
@@ -139,7 +104,9 @@ export const DetailCreditClient = ({toggle}: Props) => {
               <RegistrationAddress/>
               <Information/>
             </>
-          ) : (
+          ) : selectedDeposit === -1 ? (
+            <Information/>
+          ): (
             <>
               <Information/>
               <RegistrationAddress/>
@@ -151,6 +118,10 @@ export const DetailCreditClient = ({toggle}: Props) => {
           <Button className={styles.btn_cancel} fillMode={'flat'} onClick={() => toggle()}>Отменить</Button>
           <Button className={styles.btn_add} fillMode={'flat'} onClick={() => toggle()}>Добавить</Button>
         </div>
+
+        {selectedDeposit === -1 && (
+          <div className={styles.background}></div>
+        )}
       </div>
     </>
   )

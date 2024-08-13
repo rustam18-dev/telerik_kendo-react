@@ -14,4 +14,5 @@
   gender?: string;
   image: string;
   flag: string;
+  selected?: boolean
 }

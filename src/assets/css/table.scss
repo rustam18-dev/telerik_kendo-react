@@ -11,20 +11,20 @@
   margin-left: 5px;
 }
 
-.k-rating-item.k-selected  {
+.k-rating-item.k-selected {
   color: #ffa600;
 }
 
-.no-border-sparkline svg>g>path:first-child{
-  fill: none!important;
+.no-border-sparkline svg > g > path:first-child {
+  fill: none !important;
 }
 
 .no-border-sparkline {
   width: 100%;
 }
 
-.no-border-sparkline .k-sparkline{
-  width: 100%!important;
+.no-border-sparkline .k-sparkline {
+  width: 100% !important;
 }
 
 .k-badge-container {
@@ -34,13 +34,64 @@
 
 .k-column-title {
   width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  height: 34px !important;
 }
 
 .k-grid .k-table-row.k-table-alt-row {
   background-color: #f0fff9 !important;
 }
 
-.k-grid .k-table-tbody>.k-table-row:not(.k-detail-row):hover, .k-grid .k-table-tbody>.k-table-row:not(.k-detail-row).k-hover {
+.k-grid .k-table-tbody > .k-table-row:not(.k-detail-row):hover, .k-grid .k-table-tbody > .k-table-row:not(.k-detail-row).k-hover {
   background-color: #009673 !important;
   color: white;
+}
+
+.k-table-row {
+  font-size: 12px !important;
+  line-height: 12px !important;
+}
+
+.k-table-td {
+  height: 20px !important;
+  line-height: 20px !important;
+}
+
+.k-table-sm .k-table-th, .k-table-sm .k-table-td {
+  padding: 2px 2px 4px 10px !important;
+}
+
+.k-grid .k-grid-filter, .k-grid .k-header-column-menu, .k-grid .k-grid-header-menu, .k-grid .k-hierarchy-cell .k-icon {
+  svg {
+    visibility: hidden;
+  }
+
+  &:before {
+    content: url("/src/assets/svg/filter.svg") !important;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+th[aria-colindex="2"] {
+  display: none !important;
+}
+
+.k-grid .k-grid-header .k-table-th:first-child {
+  visibility: hidden !important;
+}
+
+.k-table-tbody .k-table-row.k-selected>.k-table-td, .k-table-list .k-table-row.k-selected {
+  background-color: #009673 !important;
+  color: white;
+}
+
+.k-checkbox:checked, .k-checkbox.k-checked {
+  background-color: #59c59b !important;
+}
+
+.k-checkbox:checked:focus, .k-checkbox.k-checked.k-focus {
+  box-shadow: none !important;
 }
