@@ -2,6 +2,7 @@ import styles from './modal_header.module.scss'
 import {Button} from "@progress/kendo-react-buttons";
 import {ChevronLeft, ChevronRight, HelpCircle, Minus} from "lucide-react";
 import {X} from 'lucide-react'
+import {useState} from "react";
 
 type Props = {
   title: string,
@@ -9,7 +10,12 @@ type Props = {
 }
 
 export const ModalHeader = ({title, toggleDialog}: Props) => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light')
 
+  const handleSwitchTheme = () => {
+    setTheme('dark')
+    console.log(theme)
+  }
   return <>
     <div className={styles.header}>
       <div className={styles.left_part}>
@@ -27,7 +33,7 @@ export const ModalHeader = ({title, toggleDialog}: Props) => {
         </div>
       </div>
       <div className={styles.right_part}>
-        <Button fillMode={'solid'} className={styles.btn_help}>
+        <Button fillMode={'solid'} className={styles.btn_help} onClick={handleSwitchTheme}>
           <HelpCircle className={styles.icon} size={20}/>
         </Button>
         <Button fillMode={'solid'} className={styles.btn_cancel}>
