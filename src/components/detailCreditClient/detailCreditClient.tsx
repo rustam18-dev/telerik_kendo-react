@@ -61,7 +61,7 @@ export const DetailCreditClient = ({toggle}: Props) => {
       <div className={styles.content_block}>
         <div>
           <Tabs selected={selectedTab} onTabSelect={handleTabSelect}>
-            <TabStripTab title="Ввод залога"/>
+            <TabStripTab title="Ввод залога" />
             <TabStripTab title="Комментарии"/>
             <TabStripTab title="Документы"/>
           </Tabs>
@@ -80,7 +80,7 @@ export const DetailCreditClient = ({toggle}: Props) => {
                 <div
                   className={getItemClasses(_item.number)}
                   key={_item.id}
-                  onClick={() => setSelectedDeposit(_item.number)}
+                  onClick={() => setSelectedDeposit(_item.id)}
                 >
                   <span className={styles.type_credit__item_number}>{_item.number}</span>
                   <span className={styles.type_credit__item_name}>{_item.title}</span>
@@ -89,7 +89,7 @@ export const DetailCreditClient = ({toggle}: Props) => {
             </div>
           </div>
 
-          {selectedDeposit === '05' ? (
+          {selectedDeposit === 5 ? (
             <>
               <Area/>
               <Parameters/>

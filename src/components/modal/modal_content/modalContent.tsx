@@ -17,7 +17,11 @@ import {HistoryData} from "../../historyData/historyData.tsx";
 import {KibData} from "../../kibData/kibData.tsx";
 import {ScoringData} from "../../scoringData/scoringData.tsx";
 
-export const ModalContent = () => {
+type Props = {
+  theme: 'light' | 'dark' | null
+}
+
+export const ModalContent = ({theme}: Props) => {
   const [selectedTab, setSelectedTab] = useState<number>(0)
   const [showAddGuarantor, setShowGuarantor] = useState<boolean>(false)
   const [showAddDeposit, setShowAddDeposit] = useState<boolean>(false)
@@ -36,7 +40,7 @@ export const ModalContent = () => {
         <AddGuarantor toggleGuarantor={() => setShowGuarantor(!showAddGuarantor)}/>
       ) : !showAddDeposit ? (
         <div className={"modal_content"}>
-          <ModalNav/>
+          <ModalNav theme={theme}/>
 
           <Tabs selected={selectedTab} onTabSelect={handleTabSelect}>
             <TabStripTab title="Основные сведения"/>

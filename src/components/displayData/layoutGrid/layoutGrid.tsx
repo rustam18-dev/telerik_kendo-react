@@ -11,7 +11,7 @@ const SELECTED_FIELD = 'selected';
 type Props = {
   client: (employee: IEmployee) => void,
   employees: IEmployee[],
-  toChangeCheckbox: boolean
+  toChangeCheckbox?: boolean
 }
 
 export const ColumnMenu = () => {

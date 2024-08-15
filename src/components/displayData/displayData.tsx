@@ -11,11 +11,13 @@ type Props = {
 export const DisplayData = ({client}: Props) => {
   const [isLayoutGrid, setIsLayoutGrid] = useState<boolean>(true)
 
+  const onIsLayoutGridToggle = (isNewLayout: boolean) => {
+    setIsLayoutGrid(isNewLayout)
+  }
+
   return (
     <div>
-      <DisplayAction
-        isLayoutGrid={(data: boolean) => setIsLayoutGrid(data)}
-      />
+      <DisplayAction isLayoutGrid={isLayoutGrid} setIsLayoutGrid={onIsLayoutGridToggle}/>
 
       {isLayoutGrid ? (
         <LayoutGrid

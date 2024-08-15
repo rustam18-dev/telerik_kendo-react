@@ -51,18 +51,28 @@
     .btn_delete {
       border: 2px solid #acacac;
       background: none;
+
+      & .dark {
+        color: white;
+      }
     }
 
     .btn_refusal {
       border: 2px solid #c52e9c;
       background: none;
+
+      & .dark {
+        color: white;
+      }
     }
+
+
 
     .btn_save {
       color: white;
       border: none;
-      background: rgb(76,173,113);
-      background: linear-gradient(90deg, rgba(76,173,113,1) 39%, rgba(152,235,169,1) 100%);
+      background: rgb(76, 173, 113);
+      background: linear-gradient(90deg, rgba(76, 173, 113, 1) 39%, rgba(152, 235, 169, 1) 100%);
       border-radius: 2px;
     }
 

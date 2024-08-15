@@ -1,16 +1,14 @@
 import {Button} from "@progress/kendo-react-buttons";
 import {AlignStartVertical, LayoutGrid, Pencil} from "lucide-react";
 import styles from './displayAction.module.scss'
-import {useState} from "react";
 import {Checkbox} from "@progress/kendo-react-all";
 
 type Props = {
-  isLayoutGrid: (data: boolean) => void
+  isLayoutGrid: boolean
+  setIsLayoutGrid: (data: boolean) => void
 }
 
-export const DisplayAction = ({isLayoutGrid}: Props) => {
-  const [active, setActive] = useState<boolean>(true);
-
+export const DisplayAction = ({setIsLayoutGrid, isLayoutGrid}: Props) => {
   return <>
     <div className={styles.actions}>
       <div className={styles.actions__block}>
@@ -21,17 +19,15 @@ export const DisplayAction = ({isLayoutGrid}: Props) => {
         </Button>
       </div>
       <div className='flex-center'>
-        <Button className={!active ? styles.active : styles.type_btn} onClick={() => {
-          setActive(false)
-          isLayoutGrid(false)
+        <Button className={!isLayoutGrid ? styles.active : styles.type_btn} onClick={() => {
+          setIsLayoutGrid(false)
         }}>
-          <AlignStartVertical color={!active ? '#fff' : '#000'} size={12}/>
+          <AlignStartVertical color={!isLayoutGrid ? '#fff' : '#000'} size={12}/>
         </Button>
-        <Button className={active ? styles.active : styles.type_btn} onClick={() => {
-          setActive(true)
-          isLayoutGrid(true)
+        <Button className={isLayoutGrid ? styles.active : styles.type_btn} onClick={() => {
+          setIsLayoutGrid(true)
         }}>
-          <LayoutGrid color={active ? '#fff' : '#000'} size={12}/>
+          <LayoutGrid color={isLayoutGrid ? '#fff' : '#000'} size={12}/>
         </Button>
       </div>
     </div>

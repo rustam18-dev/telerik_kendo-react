@@ -2,3 +2,18 @@
   border-color: #8fd5ba !important;
 }
 
+.dark .k-checkbox {
+  border-color: #114A33;
+}
+
+.k-checkbox:checked, .k-checkbox.k-checked {
+  background-color: #59c59b !important;
+}
+
+.dark .k-checkbox:checked, .k-checkbox.k-checked {
+  background-color: #114a33 !important;
+}
+
+.k-checkbox:checked:focus, .k-checkbox.k-checked.k-focus {
+  box-shadow: none !important;
+}

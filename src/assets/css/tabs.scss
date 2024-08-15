@@ -42,3 +42,23 @@ div.k-tabstrip-top>div.k-content, div.k-tabstrip-top>div.k-tabstrip-content {
 .k-tabstrip-scrollable>.k-tabstrip-items-wrapper>.k-tabstrip-items {
   gap: 5px !important;
 }
+
+.dark .k-tabstrip-items .k-link {
+  background: #000;
+  color: white;
+  border-top-right-radius: 3px;
+  border-top-left-radius: 3px;
+}
+
+.dark .k-tabstrip-items-wrapper {
+  border-color: #0d4830 !important
+}
+
+.dark .k-tabstrip-top > .dark .k-tabstrip-items-wrapper .k-item:active, .dark .k-tabstrip-top > .k-tabstrip-items-wrapper .k-item.k-active {
+  border-color: #0d4830 !important
+}
+
+.dark .k-tabstrip-scrollable > .k-tabstrip-items-wrapper > .k-button {
+  border: none !important;
+  color: white;
+}

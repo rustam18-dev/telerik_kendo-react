@@ -2,7 +2,12 @@ import styles from './modal_nav.module.scss'
 import {Button} from "@progress/kendo-react-buttons";
 import {CircleCheck, Trash2, X} from "lucide-react";
 
-export const ModalNav = () => {
+
+type Props = {
+  theme: 'light' | 'dark' | null
+}
+export const ModalNav = ({theme}: Props) => {
+
   return <>
     <div className={styles.nav}>
       <div className={styles.statuses}>
@@ -18,11 +23,11 @@ export const ModalNav = () => {
       <div className={styles.actions}>
         <Button fillMode={'solid'} className={styles.btn_delete}>
           <Trash2 className={styles.trash_icon} size={16}/>
-          <span>Корзина</span>
+          <span className={theme === 'dark' ? styles.dark : ''}>Корзина</span>
         </Button>
         <Button fillMode={'solid'} className={styles.btn_refusal}>
           <X color='#c52e9c' size={20}/>
-          <span>Отказ</span>
+          <span className={theme === 'dark' ? styles.dark : ''}>Отказ</span>
         </Button>
         <Button fillMode={'solid'} className={styles.btn_save}>
           <CircleCheck color='#fff'/>

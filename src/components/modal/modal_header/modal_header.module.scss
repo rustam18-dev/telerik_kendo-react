@@ -3,6 +3,11 @@
   justify-content: space-between;
   width: 100%;
 
+  &.dark {
+    background-color: #000;
+    color: white;
+  }
+
   & .left_part {
     display: flex;
     gap: 10px;
@@ -10,6 +15,10 @@
 
     .title {
       font-size: 18px;
+
+      &.dark {
+        color: #fff;
+      }
     }
 
     .btn_arrow {
@@ -20,13 +29,12 @@
       border-radius: 2px;
       width: 110px;
 
+      &.dark {
+        border-color: #fff;
+      }
 
-      & {
-        .rotate_icons {
-          transform: rotate(90deg);
-
-        }
-
+      & .rotate_icons {
+        transform: rotate(90deg);
       }
     }
   }
@@ -40,6 +48,10 @@
       border-radius: 2px;
       padding: 4px 14px;
       background: none;
+
+      &.dark {
+        border-color: #fff;
+      }
     }
 
     & .btn_cancel {
@@ -47,6 +59,11 @@
       border-radius: 2px;
       padding: 4px 14px;
       background: none;
+
+      &.dark {
+        border-color: #4a9a76;
+        color: white;
+      }
     }
 
     & .btn_save {
@@ -56,16 +73,23 @@
       background: linear-gradient(90deg, rgba(76,173,113,1) 39%, rgba(152,235,169,1) 100%);
       border-radius: 2px;
       padding: 4px 14px;
+
+      &.dark {
+        background: linear-gradient(90deg, rgba(56,125,85,1) 39%, rgba(104,177,130,1) 100%); /* Тёмный градиент */
+      }
+    }
+  }
+
+  .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    font-weight: bold;
+
+    &.dark {
+      color: #fff;
     }
   }
 }
-
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px;
-  font-weight: bold;
-}
-
 
