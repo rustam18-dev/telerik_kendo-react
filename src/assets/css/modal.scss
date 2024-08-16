@@ -30,7 +30,6 @@
   border-bottom-left-radius: 10px;
 }
 
-
 .k-window-title {
   padding-bottom: 14px !important;
 }
@@ -60,18 +59,16 @@
   }
 }
 
-
 .resizable_modal {
   position: absolute !important;
   padding: 0 !important;
   margin: 0 7px 0 0 !important;
   right: 0 !important;
   top: 0;
-  border: 4px solid #000;
+  border: 4px solid transparent;
   z-index: 100002;
   pointer-events: none;
 }
-
 
 .dark .k-window-titlebar {
   background: #000;
