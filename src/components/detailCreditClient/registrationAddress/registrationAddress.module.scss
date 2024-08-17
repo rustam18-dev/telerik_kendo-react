@@ -1,4 +1,5 @@
 .registration_address {
+  margin-top: 10px;
 
   & .registration_address__title {
     font-size: 13px;
@@ -8,7 +9,7 @@
     background: #e3e3e3;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       margin-left: 11px;
       margin-top: 8px;
@@ -26,7 +27,6 @@
     width: 100%;
     height: 100%;
 
-
     & .registration_address__country {
       margin: 0;
       grid-area: 1 / 1 / 2 / 3;
@@ -43,7 +43,6 @@
     & .registration_address__region {
       margin: 0;
       grid-area: 1 / 3 / 2 / 5;
-
 
       .input_region {
         padding: 8px 12px;
@@ -92,7 +91,6 @@
         border-radius: 6px;
       }
     }
-
 
     & .registration_address__block_house {
       display: grid;

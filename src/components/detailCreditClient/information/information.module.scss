@@ -1,4 +1,5 @@
 .information {
+  margin-top: 10px;
 
   & .information__title {
     font-size: 13px;
@@ -8,7 +9,7 @@
     background: #e3e3e3;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       margin-left: 11px;
       margin-top: 8px;
@@ -19,7 +20,6 @@
 
   & .information__form {
     margin: 15px 0;
-
 
     & .information__form_top {
       display: flex;
@@ -76,7 +76,6 @@
           border-radius: 6px;
         }
       }
-
     }
   }
 }

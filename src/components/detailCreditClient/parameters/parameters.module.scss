@@ -1,5 +1,5 @@
-
 .parameters {
+  margin-top: 10px;
 
   & .parameter__title {
     font-size: 13px;
@@ -9,7 +9,7 @@
     background: #e3e3e3;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       margin-left: 11px;
       margin-top: 8px;
@@ -177,6 +177,5 @@
         border-radius: 6px;
       }
     }
-
   }
 }

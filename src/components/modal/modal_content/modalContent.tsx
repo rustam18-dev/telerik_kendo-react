@@ -16,6 +16,7 @@ import { GuarantorData } from "../../guarantorData/guarantorData.tsx"
 import { HistoryData } from "../../historyData/historyData.tsx"
 import { KibData } from "../../kibData/kibData.tsx"
 import { ScoringData } from "../../scoringData/scoringData.tsx"
+import { IDeposit } from "../../../types/deposit.types.ts"
 
 type Props = {
   theme: "light" | "dark" | null
@@ -25,6 +26,7 @@ export const ModalContent = ({ theme }: Props) => {
   const [selectedTab, setSelectedTab] = useState<number>(6)
   const [showAddGuarantor, setShowGuarantor] = useState<boolean>(false)
   const [showAddDeposit, setShowAddDeposit] = useState<boolean>(false)
+  const [deposit, setDeposit] = useState<IDeposit>({} as IDeposit)
 
   const handleTabSelect = (index: number) => {
     setSelectedTab(index)
@@ -34,6 +36,10 @@ export const ModalContent = ({ theme }: Props) => {
     console.log(data)
   }
 
+  const handleSelectDeposit = (data: IDeposit) => {
+    setDeposit(data)
+    setShowAddDeposit(!showAddDeposit)
+  }
   return (
     <>
       {showAddGuarantor ? (
@@ -75,6 +81,7 @@ export const ModalContent = ({ theme }: Props) => {
               addDeposit={() => {
                 setShowAddDeposit(!showAddDeposit)
               }}
+              setDeposit={handleSelectDeposit}
             />
           ) : selectedTab === 7 ? (
             <GuarantorData
@@ -91,7 +98,13 @@ export const ModalContent = ({ theme }: Props) => {
           )}
         </div>
       ) : (
-        <DetailCreditClient toggle={() => setShowAddDeposit(!showAddDeposit)} />
+        <DetailCreditClient
+          toggle={() => {
+            setShowAddDeposit(!showAddDeposit)
+            setDeposit({} as IDeposit)
+          }}
+          deposit={deposit}
+        />
       )}
     </>
   )

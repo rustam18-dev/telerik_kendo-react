@@ -1,36 +1,28 @@
 import { Tabs } from "../ui/tabs/tabs.tsx"
 import { TabStripTab } from "@progress/kendo-react-layout"
-import { FormEvent, useRef, useState } from "react"
+import { FormEvent, useEffect, useRef, useState } from "react"
 import styles from "./detailCreditClient.module.scss"
 import { Button } from "@progress/kendo-react-buttons"
 import { Information } from "./information/information.tsx"
 import { Area } from "./area/area.tsx"
 import { RegistrationAddress } from "./registrationAddress/registrationAddress.tsx"
 import { Parameters } from "./parameters/parameters.tsx"
-import { deposits, IDeposit } from "../../assets/data/deposits.ts"
+import { deposits, IDepositType } from "../../assets/data/deposits.ts"
 import { useScroll } from "../../hooks/useScroll"
 import { BodyType } from "../../types/submitDeposit.types.ts"
+import { IDeposit } from "../../types/deposit.types.ts"
+import { renameProperties } from "../../utils/renameProperties.utils.ts"
 
 type Props = {
   toggle: () => void
+  deposit: IDeposit
 }
 
-export const DetailCreditClient = ({ toggle }: Props) => {
+export const DetailCreditClient = ({ toggle, deposit }: Props) => {
   const itemsRef = useRef<HTMLDivElement | null>(null)
   const [selectedTab, setSelectedTab] = useState<number>(0)
   const [selectedDeposit, setSelectedDeposit] = useState<string>("00")
-
-  const handleTabSelect = (index: number) => {
-    setSelectedTab(index)
-  }
-  const { handleMouseDown, handleMouseLeave, handleMouseUp, handleMouseMove } =
-    useScroll(itemsRef)
-
-  const getItemClasses = (itemNumber: string) => {
-    return `${styles.type_credit__item} ${selectedDeposit === itemNumber ? styles.type_credit__item_active : ""}`
-  }
-
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<any>({
     area_02: {
       all_square: "",
       living_area: "",
@@ -123,26 +115,46 @@ export const DetailCreditClient = ({ toggle }: Props) => {
     },
   })
 
+  useEffect(() => {
+    if (!deposit.type_deposit) return
+
+    setSelectedDeposit(deposit.type_deposit)
+    setFormData(renameProperties(deposit))
+  }, [deposit])
+
+  const handleTabSelect = (index: number) => {
+    setSelectedTab(index)
+  }
+
+  const { handleMouseDown, handleMouseLeave, handleMouseUp, handleMouseMove } =
+    useScroll(itemsRef)
+
+  const getItemClasses = (itemNumber: string) => {
+    return `${styles.type_credit__item} ${selectedDeposit === itemNumber ? styles.type_credit__item_active : ""}`
+  }
+
   const handleInputChange = (
     name: string,
     value: string | number | readonly string[] | undefined,
   ) => {
     const [parent, child] = name.split(".")
 
-    setFormData((prevState) => ({
+    setFormData((prevState: { [x: string]: any }) => ({
       ...prevState,
       [parent]: {
         ...prevState[parent as keyof typeof prevState],
-        [child]: value,
+        [child]: value ?? "",
       },
     }))
   }
 
   const handleSubmit = (e: FormEvent<HTMLButtonElement> | undefined) => {
     e?.preventDefault()
+    const deposits = JSON.parse(localStorage.getItem("deposits") || "[]")
 
     const body: BodyType = {} as BodyType
     body.type_deposit = selectedDeposit
+    body.id = deposits.length !== 0 ? deposits[deposits.length - 1].id + 1 : 1
 
     if (selectedDeposit === "05") {
       body.area = formData.area_05
@@ -172,10 +184,10 @@ export const DetailCreditClient = ({ toggle }: Props) => {
       body.registration_address = formData.registration_address
     }
 
-    const deposits = JSON.parse(localStorage.getItem("deposits") || "[]")
     deposits.push(body)
 
     localStorage.setItem("deposits", JSON.stringify(deposits))
+    toggle()
   }
 
   return (
@@ -188,43 +200,66 @@ export const DetailCreditClient = ({ toggle }: Props) => {
             <TabStripTab title="Документы" />
           </Tabs>
 
-          <div className={styles.type_credit}>
-            <span className={styles.type_credit__title}>Вид залога</span>
-            <div
-              ref={itemsRef}
-              className={`${selectedDeposit === "00" ? styles.type_credit__items_default : styles.type_credit__items}`}
-              onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-            >
-              {deposits.map((_item: IDeposit) => (
-                <div
-                  className={getItemClasses(_item.number)}
-                  key={_item.id}
-                  onClick={() => setSelectedDeposit(_item.number)}
-                >
-                  <span className={styles.type_credit__item_number}>
-                    {_item.number}
-                  </span>
-                  <span className={styles.type_credit__item_name}>
-                    {_item.title}
-                  </span>
-                </div>
-              ))}
+          {deposit.type_deposit !== "00" && (
+            <div className={styles.type_credit}>
+              <span className={styles.type_credit__title}>Вид залога</span>
+              <div
+                ref={itemsRef}
+                className={`${selectedDeposit === "00" ? styles.type_credit__items_default : styles.type_credit__items}`}
+                onMouseDown={handleMouseDown}
+                onMouseLeave={handleMouseLeave}
+                onMouseUp={handleMouseUp}
+                onMouseMove={handleMouseMove}
+              >
+                {deposits.map((_item: IDepositType) => {
+                  if (deposit.type_deposit) {
+                    if (deposit.type_deposit === _item.number) {
+                      return (
+                        <div
+                          className={getItemClasses(_item.number)}
+                          key={_item.id}
+                          onClick={() => setSelectedDeposit(_item.number)}
+                        >
+                          <span className={styles.type_credit__item_number}>
+                            {_item.number}
+                          </span>
+                          <span className={styles.type_credit__item_name}>
+                            {_item.title}
+                          </span>
+                        </div>
+                      )
+                    }
+                  } else {
+                    return (
+                      <div
+                        className={getItemClasses(_item.number)}
+                        key={_item.id}
+                        onClick={() => setSelectedDeposit(_item.number)}
+                      >
+                        <span className={styles.type_credit__item_number}>
+                          {_item.number}
+                        </span>
+                        <span className={styles.type_credit__item_name}>
+                          {_item.title}
+                        </span>
+                      </div>
+                    )
+                  }
+                })}
+              </div>
             </div>
-          </div>
+          )}
           <form action="#">
             {selectedDeposit === "05" ? (
               <>
                 <Area
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
                 <Parameters
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
               </>
@@ -232,12 +267,12 @@ export const DetailCreditClient = ({ toggle }: Props) => {
               <>
                 <Area
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
                 <RegistrationAddress
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
               </>
@@ -245,38 +280,38 @@ export const DetailCreditClient = ({ toggle }: Props) => {
               <>
                 <RegistrationAddress
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
                 <Information
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
               </>
             ) : selectedDeposit === "04" ? (
               <Information
                 onChange={handleInputChange}
-                value={formData}
+                value={formData || {}}
                 selectedDeposit={selectedDeposit}
               />
             ) : selectedDeposit === "00" ? (
               <>
                 <Information
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
                 <RegistrationAddress
                   onChange={handleInputChange}
-                  value={formData}
+                  value={formData || {}}
                   selectedDeposit={selectedDeposit}
                 />
               </>
             ) : selectedDeposit === "01" ? (
               <Information
                 onChange={handleInputChange}
-                value={formData}
+                value={formData || {}}
                 selectedDeposit={selectedDeposit}
               />
             ) : (
@@ -301,7 +336,9 @@ export const DetailCreditClient = ({ toggle }: Props) => {
           </Button>
         </div>
 
-        {selectedDeposit === "00" && <div className={styles.background}></div>}
+        {selectedDeposit === "00" && !deposit.type_deposit && (
+          <div className={styles.background}></div>
+        )}
       </div>
     </>
   )

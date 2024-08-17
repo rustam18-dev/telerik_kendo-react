@@ -1,4 +1,5 @@
 .area {
+  margin-top: 10px;
 
   & .area__title {
     font-size: 13px;
@@ -8,7 +9,7 @@
     background: #e3e3e3;
 
     &:after {
-      content: '';
+      content: "";
       position: absolute;
       margin-left: 11px;
       margin-top: 8px;
@@ -19,11 +20,10 @@
 
   & .area__top_block {
     display: grid;
-    grid-template-columns: 1.4fr 1.4fr 1.6fr 30% .1fr;
+    grid-template-columns: 1.4fr 1.4fr 1.6fr 30% 0.1fr;
     gap: 8px;
 
     & .area__all_area {
-
       .input_all_area {
         padding: 8px 12px;
         color: #7a8984;
@@ -31,7 +31,6 @@
         border: 2px solid #89d3b6;
         border-radius: 6px;
       }
-
     }
 
     & .area__living_area {
@@ -69,10 +68,9 @@
     margin: 0;
 
     display: grid;
-    grid-template-columns: .97fr;
+    grid-template-columns: 0.97fr;
 
     .textarea_additionally {
-
       padding: 8px 12px;
       color: #7a8984;
       background-color: #e3fff4;
@@ -81,5 +79,4 @@
       min-height: 50px !important;
     }
   }
-
 }

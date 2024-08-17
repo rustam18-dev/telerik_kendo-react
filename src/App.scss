@@ -1,11 +1,11 @@
-@import 'assets/css/modal';
-@import 'assets/css/button';
-@import 'assets/css/tabs';
-@import 'assets/css/table';
-@import 'assets/css/checkbox';
-@import 'assets/css/switch';
-@import 'assets/css/list_item';
-@import 'assets/css/datepicker';
+@import "assets/css/modal";
+@import "assets/css/button";
+@import "assets/css/tabs";
+@import "assets/css/table";
+@import "assets/css/checkbox";
+@import "assets/css/switch";
+@import "assets/css/list_item";
+@import "assets/css/datepicker";
 
 .flex-center {
   display: flex;
@@ -26,4 +26,3 @@
   justify-content: space-between;
   flex-direction: column;
 }
-

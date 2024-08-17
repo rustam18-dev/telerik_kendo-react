@@ -1,4 +1,4 @@
-type Address = {
+export type Address = {
   country: string
   region: string
   village: string
@@ -8,7 +8,7 @@ type Address = {
   apartment: string
 }
 
-type Area = {
+export type Area = {
   all_square: string
   living_area: string
   land: string
@@ -16,7 +16,7 @@ type Area = {
   additionally: string
 }
 
-type Parameters = {
+export type Parameters = {
   brand: string
   model: string
   color: string
@@ -31,7 +31,7 @@ type Parameters = {
   additionally: string
 }
 
-type Information = {
+export type Information = {
   collateral: string
   market: string
   description: string
@@ -40,6 +40,7 @@ type Information = {
 }
 
 export type BodyType = {
+  id: number | string
   type_deposit: "05" | "04" | "03" | "02" | "01" | "00" | string
   area?: Area
   parameters?: Parameters

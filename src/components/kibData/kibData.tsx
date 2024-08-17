@@ -1,8 +1,3 @@
-
-
 export const KibData = () => {
-
-  return <>
-    kibData
-  </>
+  return <>KibData</>
 }
