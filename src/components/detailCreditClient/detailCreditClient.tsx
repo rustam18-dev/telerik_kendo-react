@@ -119,8 +119,13 @@ export const DetailCreditClient = ({ toggle, deposit }: Props) => {
     if (!deposit.type_deposit) return
 
     setSelectedDeposit(deposit.type_deposit)
+    console.log(formData)
     setFormData(renameProperties(deposit))
   }, [deposit])
+
+  useEffect(() => {
+    console.log(formData, "new")
+  }, [formData])
 
   const handleTabSelect = (index: number) => {
     setSelectedTab(index)
@@ -135,20 +140,21 @@ export const DetailCreditClient = ({ toggle, deposit }: Props) => {
 
   const handleInputChange = (
     name: string,
-    value: string | number | readonly string[] | undefined,
+    value: string | number | readonly string[],
+    // value: string | number | readonly string[] | undefined,
   ) => {
-    const [parent, child] = name.split(".")
-
+    const [property, val] = name.split(".")
+    console.log("parent handleInputChange")
     setFormData((prevState: { [x: string]: any }) => ({
       ...prevState,
-      [parent]: {
-        ...prevState[parent as keyof typeof prevState],
-        [child]: value ?? "",
+      [property]: {
+        ...prevState[property as keyof typeof prevState],
+        [val]: value ?? "",
       },
     }))
   }
 
-  const handleSubmit = (e: FormEvent<HTMLButtonElement> | undefined) => {
+  const handleSubmitCreate = (e: FormEvent<HTMLButtonElement> | undefined) => {
     e?.preventDefault()
     const deposits = JSON.parse(localStorage.getItem("deposits") || "[]")
 
@@ -185,6 +191,35 @@ export const DetailCreditClient = ({ toggle, deposit }: Props) => {
     }
 
     deposits.push(body)
+
+    localStorage.setItem("deposits", JSON.stringify(deposits))
+    toggle()
+  }
+
+  const handleSubmitUpdate = () => {
+    let deposits = JSON.parse(localStorage.getItem("deposits") || "[]")
+    const { type_deposit, id } = deposit
+
+    const newData: IDeposit = {
+      id,
+      type_deposit,
+      ...Object.fromEntries(
+        Object.entries(formData).map(([key, value]) => [
+          key.split("_")[0],
+          value,
+        ]),
+      ),
+    }
+
+    deposits = deposits.map((item: IDeposit) => {
+      if (newData.id === item.id) {
+        item = newData
+      }
+
+      return item
+    })
+
+    console.log(deposits)
 
     localStorage.setItem("deposits", JSON.stringify(deposits))
     toggle()
@@ -327,13 +362,23 @@ export const DetailCreditClient = ({ toggle, deposit }: Props) => {
           >
             Отменить
           </Button>
-          <Button
-            className={styles.btn_add}
-            fillMode={"flat"}
-            onClick={handleSubmit}
-          >
-            Добавить
-          </Button>
+          {deposit.type_deposit ? (
+            <Button
+              className={styles.btn_add}
+              fillMode={"flat"}
+              onClick={handleSubmitUpdate}
+            >
+              Обновить
+            </Button>
+          ) : (
+            <Button
+              className={styles.btn_add}
+              fillMode={"flat"}
+              onClick={handleSubmitCreate}
+            >
+              Добавить
+            </Button>
+          )}
         </div>
 
         {selectedDeposit === "00" && !deposit.type_deposit && (

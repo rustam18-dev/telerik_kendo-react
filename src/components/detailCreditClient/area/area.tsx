@@ -12,7 +12,8 @@ import { useEffect, useState } from "react"
 type Props = {
   onChange: (
     name: string,
-    value: string | readonly string[] | number | undefined,
+    // value: string | readonly string[] | number | undefined,
+    value: string | readonly string[] | number,
   ) => void
   value?: any
   selectedDeposit: string

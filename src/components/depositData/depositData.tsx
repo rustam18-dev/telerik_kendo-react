@@ -18,18 +18,46 @@ type Props = {
 }
 
 export const DepositData = ({ addDeposit, setDeposit }: Props) => {
-  const [deposits] = useState<IDeposit[]>(
+  const [valueCheckbox, setValueCheckbox] = useState<boolean>(false)
+  const [checkedDeposit, setCheckedDeposit] = useState<IDeposit[]>([])
+  const [deposits, setDeposits] = useState<IDeposit[]>(
     JSON.parse(localStorage.getItem("deposits") ?? "[]"),
   )
 
   const handleSelectDepositData = (data: IDeposit) => {
     setDeposit(data)
   }
+
+  const handleCheckedDepositData = (data: IDeposit[]) => {
+    setCheckedDeposit(data)
+  }
+
+  const handleSelectCheckbox = (e: any) => {
+    setValueCheckbox(e?.value)
+  }
+
+  const handleDeleteDeposit = (items: IDeposit[]) => {
+    if (!confirm("Действительно хотите удалить?")) return
+
+    let newData: IDeposit[] = []
+
+    items.forEach((item) => {
+      if (item.selected) {
+        newData = deposits.filter((dep) => item.id !== dep.id)
+      }
+    })
+
+    localStorage.setItem("deposits", JSON.stringify(newData))
+    setDeposits(newData)
+  }
   return (
     <>
       <div className={stylesAction.actions}>
         <div className={stylesAction.actions__block}>
-          <Checkbox className={stylesAction.actions_checkbox} />
+          <Checkbox
+            className={stylesAction.actions_checkbox}
+            onChange={handleSelectCheckbox}
+          />
           <Button className="flex-center btn_small" fillMode={"flat"}>
             <RefreshCcw size={12} />
             <span>Обновить</span>
@@ -42,7 +70,11 @@ export const DepositData = ({ addDeposit, setDeposit }: Props) => {
             <CirclePlus size={12} />
             <span>Новый залог</span>
           </Button>
-          <Button className="flex-center btn_small" fillMode={"flat"}>
+          <Button
+            className="flex-center btn_small"
+            fillMode={"flat"}
+            onClick={() => handleDeleteDeposit(checkedDeposit)}
+          >
             <Trash2 size={12} />
             <span>Удалить</span>
           </Button>
@@ -60,7 +92,9 @@ export const DepositData = ({ addDeposit, setDeposit }: Props) => {
 
       <LayoutGridDeposit
         selectDeposit={handleSelectDepositData}
+        checkDeposit={handleCheckedDepositData}
         deposits={deposits}
+        toChangeCheckbox={valueCheckbox}
       />
     </>
   )

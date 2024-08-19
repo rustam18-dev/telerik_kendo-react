@@ -11,7 +11,8 @@ import { useEffect, useState } from "react"
 type Props = {
   onChange: (
     name: string,
-    value: string | readonly string[] | number | undefined,
+    // value: string | readonly string[] | number | undefined,
+    value: string,
   ) => void
   value?: any
   selectedDeposit: string
@@ -25,11 +26,13 @@ export const Information = ({
   const [parent, setParent] = useState<string>("information")
   const [val, setVal] = useState<any>(value[parent] || {})
 
-  const handleChange = (
-    e: TextBoxChangeEvent | TextAreaChangeEvent,
-    name: string,
-  ) => {
-    onChange(name, e.target.value)
+  const handleChange = (e: TextBoxChangeEvent, name: string) => {
+    onChange(name, e.syntheticEvent.target.value)
+  }
+
+  const handleChangeTextArea = (e: TextAreaChangeEvent, name: string) => {
+    console.log("handleChangeTextArea ", typeof e.target.value)
+    onChange(name, e.target.value as string)
   }
 
   useEffect(() => {
@@ -82,7 +85,7 @@ export const Information = ({
               placeholder="Введите описание"
               className={styles.textarea_description}
               value={val.description || ""}
-              onChange={(e) => handleChange(e, `${parent}.description`)}
+              onChange={(e) => handleChangeTextArea(e, `${parent}.description`)}
             />
           </p>
           <p className={styles.information__form_bottom_owner}>

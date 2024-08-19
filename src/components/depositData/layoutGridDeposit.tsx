@@ -11,6 +11,7 @@ const SELECTED_FIELD = "selected"
 
 type Props = {
   selectDeposit: (data: IDeposit) => void
+  checkDeposit?: (data: IDeposit[]) => void | undefined
   deposits: IDeposit[]
   toChangeCheckbox?: boolean
 }
@@ -23,6 +24,7 @@ export const LayoutGridDeposit = ({
   selectDeposit,
   deposits,
   toChangeCheckbox,
+  checkDeposit,
 }: Props) => {
   const [data, setData] = useState<IDeposit[]>(deposits)
   const handleDoubleClick = (event: GridRowDoubleClickEvent) => {
@@ -45,6 +47,10 @@ export const LayoutGridDeposit = ({
 
       return item
     })
+
+    if (checkDeposit) {
+      checkDeposit(newData)
+    }
 
     setData(newData)
   }
